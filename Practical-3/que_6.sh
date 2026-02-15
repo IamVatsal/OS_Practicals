@@ -1,7 +1,10 @@
-echo "Enter String"
-read str1
-jan="January"
-if [[ "$jan" = *"$str1"* ] ]
-then
-    echo "$jan"
-fi
+echo "Enter Month: "
+read month
+case $month in
+Jan|Janu|Janua|Januar|January)
+echo "January"
+;;
+*)
+echo "Invalid Input"
+;;
+esac

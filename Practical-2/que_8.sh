@@ -1,14 +1,31 @@
-echo "Enter Three Numbers: "
-read num1 
-read num2
-read num3
+echo "Enter Number1:"
+read a
+echo "Enter Number2:"
+read b
+echo "Enter Number3:"
+read c
 
-if [ $num1 -eq $num2 ] && [ $num2 -eq $num3]; then
-    echo "All are Equal"
-elif [ $num1 -gt $num2 ] && [ $num1 -gt $num3 ]; then
-    echo "$num1 is Greater than $num2 & $num3"
-elif [ $num2 -gt $num1 ] && [ $num2 -gt $num3 ]; then
-    echo "$num2 is Greater than $num1 & $num3"
-else
-    echo "$num3 is Greater than $num1 & $num2"
+if [ $a -gt $b ] && [ $a -gt $c ]
+then
+    echo "$a is greatest"
+elif [ $b -gt $a ] && [ $b -gt $c ]
+then
+    echo "$b is greatest"
+elif [ $c -gt $a ] && [ $c -gt $b ]
+then
+    echo "$c is greatest"
+
+elif [ $a -eq $b ] && [ $a -gt $c ]
+then
+    echo "$a and $b are equal and greatest"
+elif [ $a -eq $c ] && [ $a -gt $b ]
+then
+    echo "$a and $c are equal and greatest"
+elif [ $b -eq $c ] && [ $b -gt $a ]
+then
+    echo "$b and $c are equal and greatest"
+
+elif [ $a -eq $b ] && [ $b -eq $c ]
+then
+    echo "All three numbers are equal"
 fi
