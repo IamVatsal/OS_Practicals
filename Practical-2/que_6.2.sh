@@ -9,7 +9,7 @@ echo "5. Modulus"
 echo "Enter Your Choice (1-5): "
 read choice
 
-if [ $choice = 1 ] then
+if [ $choice = 1 ]; then
     sum=`expr $num1 + $num2`
     echo "Sum: $sum"
 elif [ $choice = 2 ]; then
