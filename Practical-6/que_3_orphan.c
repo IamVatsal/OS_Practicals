@@ -2,20 +2,22 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(){
+int main() {
     pid_t pid = fork();
 
     if (pid < 0) {
         fprintf(stderr, "Fork failed\n");
         return 1;
-    } else if (pid == 0) {
+    }
+    else if (pid == 0) {
         // Child process
-        sleep(10); // Simulate some work
+        sleep(3); // Simulate some work
         printf("Child Process ID: %d, New Parent Process ID: %d\n", getpid(), getppid());
-    } else {
+    }
+    else {
         // Parent process
-        sleep(5); // Simulate some work
         printf("Parent Process ID: %d, Child Process ID: %d\n", getpid(), pid);
+        exit(0); // Parent exits immediately, child becomes orphan
     }
 
     return 0;

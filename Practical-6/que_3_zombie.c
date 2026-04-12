@@ -2,22 +2,29 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(){
+int main() {
     pid_t pid = fork();
 
     if (pid > 0) {
         // Parent process
-        printf("Parent Process ID: %d\n", getpid());
-        printf("Child Process ID: %d\n", pid);
-        sleep(10); // Sleep to allow child process to become a zombie
-    } else if (pid == 0) {
+        printf("Parent PID: %d\n", getpid());
+        printf("Child PID: %d\n", pid);
+
+        sleep(2); // Give child time to exit
+
+        printf("\nChecking process table (look for Z state):\n");
+        system("ps -l");  // Show process status
+
+        sleep(10); // Keep parent alive so zombie persists
+    } 
+    else if (pid == 0) {
         // Child process
-        printf("Child Process ID: %d\n", getpid());
-        exit(0); // Child process exits immediately, becoming a zombie
-    } else {
-        // Fork failed
+        printf("Child PID: %d exiting...\n", getpid());
+        exit(0); // Child becomes zombie
+    } 
+    else {
         perror("Fork failed");
-        return 1;
     }
+
     return 0;
 }
